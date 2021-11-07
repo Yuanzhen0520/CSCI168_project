@@ -42,6 +42,7 @@ void RayTracer::render(const Scene& _scene) const {
       glm::vec3 direction = glm::vec3(tau,sigma,-d);//need to caulculate
 
       Ray(o,direction);
+      
     }
   }
 }
