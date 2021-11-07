@@ -1,4 +1,4 @@
-p////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 /// @file
 /// @brief Contains main function to create a window and run engine that
 ///        repeatedly generates a framebuffer and displays it.
@@ -8,29 +8,34 @@ p///////////////////////////////////////////////////////////////////////////////
 // Includes
 
 // STL
+
 #include <chrono>
 #include <iostream>
 #include <memory>
 #include <thread>
+#include <vector>
 
 // Engine
 #include "GLInclude.h"
+
+// file reader
+#include "fileReader2.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Global variables - avoid these
 
 // Window
-int g_width{1360};
-int g_height{768};
 
 // Framebuffer
 std::unique_ptr<glm::vec4[]> g_frame{nullptr}; ///< Framebuffer
 
 // Frame rate
+//int radii = returnCircleRadii();
+//std::cout << radii << std::endl;
 const unsigned int FPS = 60;
 float g_frameRate{0.f};
 std::chrono::high_resolution_clock::time_point g_frameTime{
-  std::chrono::high_resolution_clock::now()};
+std::chrono::high_resolution_clock::now()};
 float g_delay{0.f};
 float g_framesPerSecond{0.f};
 
@@ -62,7 +67,7 @@ void resize(GLFWwindow* window, int _w, int _h) {
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief Draw function for single frame
 void
-draw(GLFWwindow* _window, double _currentTime) {
+draw(GLFWwindow* _window, double d_currentTime) {
   //////////////////////////////////////////////////////////////////////////////
   // Clear
   glClear(GL_COLOR_BUFFER_BIT);
@@ -73,7 +78,8 @@ draw(GLFWwindow* _window, double _currentTime) {
   //////////////////////////////////////////////////////////////////////////////
   // Draw
 
-  // Simple static :P
+
+  //Simple static :P
   for(int i = 0; i < g_width*g_height; ++i)
     g_frame[i] = glm::vec4(float(rand())/RAND_MAX, float(rand())/RAND_MAX,
                            float(rand())/RAND_MAX, 1.f);
@@ -163,6 +169,7 @@ int
 main(int _argc, char** _argv) {
   //////////////////////////////////////////////////////////////////////////////
   // Initialize
+  fileReaderSecondTry("sampleFile.txt");
   std::cout << "Initializing GLFWWindow" << std::endl;
   // GLFW
   glfwSetErrorCallback(errorCallback);
@@ -170,7 +177,6 @@ main(int _argc, char** _argv) {
     std::cerr << "GLFW Cannot initialize" << std::endl;
     return 1;
   }
-
   GLFWwindow* window = glfwCreateWindow(
     g_width, g_height, "Spiderling: A Rudamentary Game Engine", NULL, NULL);
   if(!window) {

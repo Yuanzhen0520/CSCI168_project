@@ -6,11 +6,6 @@
 
 // Engine
 #include "Renderer.h"
-#include "Ray.h"
-#include "Scene.h"
-#include "Sphere.h"
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief Ray tracer

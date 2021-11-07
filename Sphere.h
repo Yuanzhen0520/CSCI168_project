@@ -8,7 +8,6 @@
 #include "Collision.h"
 #include "Material.h"
 #include "Object.h"
-#include <cmath>
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief Sphere
