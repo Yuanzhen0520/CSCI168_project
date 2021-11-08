@@ -12,6 +12,7 @@ using namespace std;
 
 int g_width{1360};
 int g_height{768};
+// stuff
 
 
 vector<int> sphereNumber;
