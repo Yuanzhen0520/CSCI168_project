@@ -1,7 +1,7 @@
 #include "RayTracer.h"
 #include "Ray.h"
 #include "globalVariables.h"
-
+//test 
 void RayTracer::clear() const {
 }
 
