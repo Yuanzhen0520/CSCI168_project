@@ -2,6 +2,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include "scene.h"
 
 using namespace std;
 
