@@ -534,4 +534,4 @@ RayTracer.o: RayTracer.cpp RayTracer.h GLInclude.h \
   /usr/local/include/glm/./gtx/../mat2x2.hpp \
   /usr/local/include/glm/./gtx/range.hpp \
   /usr/local/include/glm/./gtx/../gtc/type_ptr.hpp Renderer.h Scene.h \
-  Ray.h globalVariables.h
+  Ray.h

@@ -533,5 +533,4 @@ main.o: main.cpp GLInclude.h /usr/local/include/GLFW/glfw3.h \
   /usr/local/include/glm/./gtx/../vec4.hpp \
   /usr/local/include/glm/./gtx/../mat2x2.hpp \
   /usr/local/include/glm/./gtx/range.hpp \
-  /usr/local/include/glm/./gtx/../gtc/type_ptr.hpp fileReader2.h \
-  globalVariables.h
+  /usr/local/include/glm/./gtx/../gtc/type_ptr.hpp fileReader2.h
