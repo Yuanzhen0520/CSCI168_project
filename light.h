@@ -1,7 +1,7 @@
 #include "GLInclude.h"
 
-#indef _light_h
-#define _light_h 
+#indef _LIGHT_H
+#define _LIGHT_H
 
 class Light{
 
