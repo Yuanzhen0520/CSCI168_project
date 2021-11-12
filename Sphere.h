@@ -25,5 +25,15 @@ class Sphere : public Object {
     float      m_radius; ///< Radius
     Material m_material; ///< Material
 };
-
+/*
+class Sphere{
+public:
+    glm:vec3 getRadius() { return radius; }
+    glm:vec3 getCenter() { return center; }
+    void setRadius(glm:vec3 r) { radius = r; }
+    void setCenter(glm:vec3 c) { center = c; }
+private:
+    glm:vec3 radius;
+    glm:vec3 center;
+}*/
 #endif

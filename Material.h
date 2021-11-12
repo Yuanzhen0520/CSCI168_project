@@ -11,4 +11,16 @@ struct Material {
     float shininess;
 };
 
+
+/* 
+struct Material{
+bool has_texture; 
+
+//global material color 
+//vec4 kA
+//vec4 kD
+//vec4 kS
+//float shineness
+
+*/
 #endif
