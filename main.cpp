@@ -32,8 +32,6 @@ int g_height{768};
 std::unique_ptr<glm::vec4[]> g_frame{nullptr}; ///< Framebuffer
 
 // Frame rate
-//int radii = returnCircleRadii();
-//std::cout << radii << std::endl;
 const unsigned int FPS = 60;
 float g_frameRate{0.f};
 std::chrono::high_resolution_clock::time_point g_frameTime{
@@ -171,7 +169,8 @@ int
 main(int _argc, char** _argv) {
   //////////////////////////////////////////////////////////////////////////////
   // Initialize
-  //fileReaderSecondTry("sampleFile.txt");
+  fileReaderSecondTry("sampleFile.txt");
+  
   std::cout << "Initializing GLFWWindow" << std::endl;
   // GLFW
   glfwSetErrorCallback(errorCallback);

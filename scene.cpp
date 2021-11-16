@@ -3,38 +3,6 @@
 
 void Scene::readScene()
 {
-    /*ifstream input;
-    string object;
-    int val1;
-    int val2;
-    int val3;
-    input.open("scene.txt");
-    while( input >> object >> val1 >> val2 >> val3){
-        if(object == "camera_eye"){
-            _camera.setEye({val1, val2, val3});
-        }
-        if(object == "camera_at"){
-            _camera.setAtVector({val1,val2,val3});
-        }
-        if(object == "camera_up"){
-            _camera.setUpVector({val1,val2,val3});
-        }
-        if( object == "projection_perspective"){
-            
-        }
-        if(object == "sphere_center"){
-            _sphere.setCenter({val1,val2,val3});
-        }
-        if(object == "sphere_radius"){
-            _sphere.setRadius({val1,val2,val3});
-        }
-        if(object == "plane_point"){
-            _plane.setPoint({val1,val2,val3});
-        }
-        if(object == "plane_normal"){
-            _plane.setNormal({val1,val2,val3});
-        }
-    }*/
     fileReaderSecondTry("sampleFile.txt");
     for(int i = 0;i < numberOfSpheres;i++) {
         // create sphere object
@@ -43,8 +11,9 @@ void Scene::readScene()
         cent[0] = spheres[i][1];
         cent[1] = spheres[i][2];
         cent[2] = spheres[i][3];
-        std::cout << "Z component of sphere center: " << cent[2] << endl;
-        // now create a sphere object, idk how to do that
+        Sphere sphere();
+        sphere.setRadius(rad);
+        sphere.setCenter(cent);
     }
     for(int j = 0;j < numberOfPlanes;j++) {
         // create plane object
@@ -56,11 +25,18 @@ void Scene::readScene()
         n[0] = planeNormals[j][0];
         n[1] = planeNormals[j][1];
         n[2] = planeNormals[j][2];
-        std::cout << "X component of plane point: " << p[0] << endl;
-        // now create a plane object, idk how to do that
+        Plane plane();
+        plane.setPoint(p);
+        plane.setNormal(n);
+    }
+    for(int k = 0;k < numberOfLights;k++) {
+        glm::vec3 l;
+        l[0] = lights[k][0];
+        l[1] = lights[k][1];
+        l[2] = lights[k][2];
+        Light light();
+        light.setPosition(l);
     }
 
 
 }
-
-//use constructors, read line by line
