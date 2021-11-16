@@ -171,7 +171,7 @@ int
 main(int _argc, char** _argv) {
   //////////////////////////////////////////////////////////////////////////////
   // Initialize
-  fileReaderSecondTry("sampleFile.txt");
+  //fileReaderSecondTry("sampleFile.txt");
   std::cout << "Initializing GLFWWindow" << std::endl;
   // GLFW
   glfwSetErrorCallback(errorCallback);

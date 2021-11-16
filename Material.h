@@ -20,7 +20,7 @@ bool has_texture;
 //vec4 kA
 //vec4 kD
 //vec4 kS
-//float shineness
+//float shininess
 
 */
 #endif

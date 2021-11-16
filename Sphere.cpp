@@ -34,9 +34,10 @@ Collision Sphere::collide(const Ray& _ray) const {
     collisionPoint[1] = _o[1] + firstCollisionT*_d[1];
     collisionPoint[2] = _o[2] + firstCollisionT*_d[2];
 
-    collisionNormal[0] = (collisionPoint[0] - _c[0])/_r;
+    collisionNormal = (collisionPoint - _c)/_r;
+    /*collisionNormal[0] = (collisionPoint[0] - _c[0])/_r;
     collisionNormal[1] = (collisionPoint[1] - _c[1])/_r;
-    collisionNormal[2] = (collisionPoint[2] - _c[2])/_r;
+    collisionNormal[2] = (collisionPoint[2] - _c[2])/_r;*/
 
     return Collision(collisionPoint,collisionNormal,pointMaterial);
     

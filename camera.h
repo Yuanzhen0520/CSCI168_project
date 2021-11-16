@@ -6,7 +6,7 @@
 
 class Camera {
 public:
-    Camera(glm::vec3& position, glm::vec3&  at, glm::vec3&  up) {} //constructor
+    /*Camera(glm::vec3& position, glm::vec3&  at, glm::vec3&  up) {} //constructor
     ~Camera() {} //destructor
     
     glm::vec3 position(){return position;}
@@ -18,7 +18,7 @@ private:
     glm::vec3  position;
     glm::vec3  at;
     glm::vec3  up;
-    glm::vec3  eye;
+    glm::vec3  eye;*/
 };
 
 #endif

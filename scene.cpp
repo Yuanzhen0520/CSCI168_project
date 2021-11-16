@@ -1,8 +1,9 @@
 #include "Scene.h"
+#include "fileReader2.h"
 
 void Scene::readScene()
 {
-    ifstream input;
+    /*ifstream input;
     string object;
     int val1;
     int val2;
@@ -33,7 +34,33 @@ void Scene::readScene()
         if(object == "plane_normal"){
             _plane.setNormal({val1,val2,val3});
         }
+    }*/
+    fileReaderSecondTry("sampleFile.txt");
+    for(int i = 0;i < numberOfSpheres;i++) {
+        // create sphere object
+        float rad = spheres[i]][0];
+        glm::vec3 cent;
+        cent[0] = spheres[i][1];
+        cent[1] = spheres[i][2];
+        cent[2] = spheres[i][3];
+        std::cout << "Z component of sphere center: " << cent[2] << endl;
+        // now create a sphere object, idk how to do that
     }
+    for(int j = 0;j < numberOfPlanes;j++) {
+        // create plane object
+        glm::vec3 p;
+        glm::vec3 n;
+        p[0] = planePoints[j][0];
+        p[1] = planePoints[j][1];
+        p[2] = planePoints[j][2];
+        n[0] = planeNormals[j][0];
+        n[1] = planeNormals[j][1];
+        n[2] = planeNormals[j][2];
+        std::cout << "X component of plane point: " << p[0] << endl;
+        // now create a plane object, idk how to do that
+    }
+
+
 }
 
 //use constructors, read line by line
