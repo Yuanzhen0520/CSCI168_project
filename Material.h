@@ -18,6 +18,17 @@ Material() :
     shininess(1.0f)
     {}
 
+struct Intensity{
+  glm::vec4 Ia;
+  glm::vec4 Id;
+  glm::vec4 Is;
+};
+
+Intensity():
+ Ia(0.1f, 0.1f, 0.1f, 1f)
+ Id(0.8f, 0.8f, 0.8f, 1f)
+ Is(0.8f, 0.8f, 0.8f, 1f)
+ {}
 /* 
 struct Material{
 bool has_texture; 
