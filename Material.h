@@ -19,15 +19,15 @@ Material() :
     {}
 
 struct Intensity{
-  glm::vec4 Ia;
-  glm::vec4 Id;
-  glm::vec4 Is;
+  glm::vec4 iA;
+  glm::vec4 iD;
+  glm::vec4 iS;
 };
 
 Intensity():
- Ia(0.1f, 0.1f, 0.1f, 1f)
- Id(0.8f, 0.8f, 0.8f, 1f)
- Is(0.8f, 0.8f, 0.8f, 1f)
+ Ia(0.1f, 0.1f, 0.1f)
+ Id(0.8f, 0.8f, 0.8f)
+ Is(0.8f, 0.8f, 0.8f)
  {}
 /* 
 struct Material{
