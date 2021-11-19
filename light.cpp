@@ -3,7 +3,7 @@
 glm:vec3 Light::multipleLights(Material_m, glm::vec3_p,glm::vec3_n,glm:::vec3_d,glm.vec3_cEye){
   //ambient light
   
-  glm::vec3IA;
+  glm::vec3 IA;
   IA = _m.kA * iA
     
     //Lambertian Shading 
