@@ -1,11 +1,11 @@
 #include "GLInclude.h"
+#include "Object.h"
 
 #ifndef _PLANE_H_
 #define _PLANE_H_
 
 
-
-class Plane {
+class Plane : public Object {
     public: 
         glm::vec3 getN() { return normal; }
         glm::vec3 getP() { return pointP; }
