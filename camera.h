@@ -6,19 +6,18 @@
 
 class Camera {
 public:
-    /*Camera(glm::vec3& position, glm::vec3&  at, glm::vec3&  up) {} //constructor
+    Camera(glm::vec3& eye, glm::vec3&  at, glm::vec3&  up) {} //constructor
     ~Camera() {} //destructor
     
-    glm::vec3 position(){return position;}
-    glm::vec3 at(){return at;}
-    glm::vec3 up(){return up;}
-    glm::vec3 eye(){return eye;}
+    glm::vec3 getEye(){return eye;}
+    glm::vec3 getAt(){return at;}
+    glm::vec3 getUp(){return up;}
     
 private:
-    glm::vec3  position;
-    glm::vec3  at;
-    glm::vec3  up;
-    glm::vec3  eye;*/
+    glm::vec3 eye;
+    glm::vec3 at;
+    glm::vec3 up;
+    glm::vec3 right;
 };
 
 #endif
