@@ -534,4 +534,4 @@ main.o: main.cpp GLInclude.h /usr/local/include/GLFW/glfw3.h \
   /usr/local/include/glm/./gtx/../mat2x2.hpp \
   /usr/local/include/glm/./gtx/range.hpp \
   /usr/local/include/glm/./gtx/../gtc/type_ptr.hpp Scene.h light.h \
-  Sphere.h Collision.h Material.h Object.h Ray.h plane.h camera.h
+  Material.h Sphere.h Collision.h Object.h Ray.h plane.h camera.h

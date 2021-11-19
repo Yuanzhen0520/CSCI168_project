@@ -26,7 +26,7 @@ void RayTracer::render(const Scene& _scene) const {
   //
   //     shade the ray intersection
   //
-  // Copy framebuffer to screne
+  // Copy framebuffer to screen
   /*for(double x = 0; x < g_width; x++) {
     for(double y = 0; y < g_height; y++) {
         // point is (x,y)

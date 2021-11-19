@@ -170,6 +170,8 @@ int
 main(int _argc, char** _argv) {
   //////////////////////////////////////////////////////////////////////////////
   // Initialize
+  Scene s = Scene();
+  s.readScene();
   /*Scene scene();
   scene.readScene();*/
   std::cout << "Initializing GLFWWindow" << std::endl;

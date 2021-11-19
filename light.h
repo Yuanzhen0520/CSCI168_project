@@ -1,19 +1,21 @@
 #include "GLInclude.h"
+#include <math.h>
+#include "Material.h"
 
 #ifndef _LIGHT_H
 #define _LIGHT_H
 
 class Light{
   public:
-    glm::vec3 kA;
-    glm::vec3 kD;
-    glm::vec3 kS;
+    glm::vec3 iA;
+    glm::vec3 iD;
+    glm::vec3 iS;
     glm::vec3 direciton;
-    Light() {};
+    glm::vec3 multipleLights(Light _l, Material _m, glm::vec3 _p, glm::vec3 _n, glm::vec3 _cEye);
     glm::vec3 getPosition() { return position; }
     Light(glm::vec3 position) : position(position) {}
     void setPosition(glm::vec3 p) { position = p;}
-
+  
   private:
     glm::vec3 position;
 };
