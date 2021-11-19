@@ -43,6 +43,13 @@ void Scene::readScene()
         light.setPosition(l);
         lightVector.push_back(light);
     }
-
-
+    glm::vec3 eye = (0,0,0);
+    glm::vec3 at = (0,0,-1);
+    glm::vec3 up = (0,1,0);
+    Camera camera(eye,at,up);
+    Scene scene();
+    scene.setL(lightVector);
+    scene.setP(planeVector);
+    scene.setS(sphereVector);
+    scene.setC(camera);
 }

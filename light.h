@@ -5,9 +5,9 @@
 
 class Light{
   public:
-    glm::vec3 ambient;
-    glm::vec3 diffuse;
-    glm::vec3 specular;
+    glm::vec3 kA;
+    glm::vec3 kD;
+    glm::vec3 kS;
     glm::vec3 direciton;
     Light() {};
     glm::vec3 getPosition() { return position; }

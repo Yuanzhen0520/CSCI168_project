@@ -15,11 +15,12 @@
 #include <thread>
 #include <vector>
 
+
 // Engine
 #include "GLInclude.h"
 
 // file reader
-#include "fileReader2.h"
+#include "Scene.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Global variables - avoid these
@@ -169,8 +170,8 @@ int
 main(int _argc, char** _argv) {
   //////////////////////////////////////////////////////////////////////////////
   // Initialize
-  fileReaderSecondTry("sampleFile.txt");
-  
+  /*Scene scene();
+  scene.readScene();*/
   std::cout << "Initializing GLFWWindow" << std::endl;
   // GLFW
   glfwSetErrorCallback(errorCallback);

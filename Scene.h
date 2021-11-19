@@ -9,8 +9,10 @@
 
 class Scene {
   public:
-    Scene (std::vector<Light> l, std::vector<Sphere> s, Camera c,std::vector<Plane> p):
-    l{l}, s{s}, c{c}, p{p} {}
+    //std::vector<Light> l, std::vector<Sphere> s, Camera c,std::vector<Plane> p    this was inside ()
+    Scene ():
+    // l{l}, s{s}, c{c}, p{p} {}
+    void readScene();
     
     std::vector<Light> getL() { return l; }
     std::vector<Sphere> getS() { return s; }

@@ -5,29 +5,29 @@
 /// @brief Material
 ////////////////////////////////////////////////////////////////////////////////
 struct Material {
-    glm::vec3 ambient;
-    glm::vec3 diffuse;
-    glm::vec3 specular;
+    glm::vec4 kA;
+    glm::vec4 kD;
+    glm::vec4 kS;
     float shininess;
 };
 
 Material() : 
-    ambient(0.0f ,0.2f ,0.2f ,0.3f)
-    diffuse( 0.0f ,0.2f ,0.2f ,0.3f)
-    specular( 0.0f, 0.0f, 0.0f, 1.0f)
+    kA(0.0f ,0.2f ,0.2f ,0.3f)
+    kD( 0.0f ,0.2f ,0.2f ,0.3f)
+    kS( 0.0f, 0.0f, 0.0f, 1.0f)
     shininess(1.0f)
     {}
 
 struct Intensity{
-  glm::vec4 Ia;
-  glm::vec4 Id;
-  glm::vec4 Is;
+  glm::vec3 iA;
+  glm::vec3 iD;
+  glm::vec3 iS;
 };
 
 Intensity():
- Ia(0.1f, 0.1f, 0.1f, 1f)
- Id(0.8f, 0.8f, 0.8f, 1f)
- Is(0.8f, 0.8f, 0.8f, 1f)
+ iA(0.1f, 0.1f, 0.1f)
+ iD(0.8f, 0.8f, 0.8f)
+ iS(0.8f, 0.8f, 0.8f)
  {}
 /* 
 struct Material{

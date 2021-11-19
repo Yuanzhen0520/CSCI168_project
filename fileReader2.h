@@ -36,10 +36,10 @@ void fileReaderSecondTry(const char *filename) {
     numberOfLights = lights.size() - 1;
     numberOfCameras = 1;
 
-    std::cout << "Number of spheres: " << numberOfSpheres << std::endl;
+    /*std::cout << "Number of spheres: " << numberOfSpheres << std::endl;
     std::cout << "Number of planes: " << numberOfPlanes << std::endl;
     std::cout << "Number of lights: " << numberOfLights << std::endl;
-    /*
+    
     std::cout << "Sphere Number " << sphereNumber[3] << "  y= " << spheres[3][2] << std::endl;
     std::cout << "Plane Number " << planeNumber[2] << " py= " << planePoints[2][1] << std::endl;
     std::cout << "Sphere Number " << sphereNumber[9] << "  " << "r= " << radiiVector[9] << "  " << "cx= " << cxVector[9] << "  " << "cy= " << cyVector[9] << "  " << "cz= " << czVector[9] << "  " << std::endl;
