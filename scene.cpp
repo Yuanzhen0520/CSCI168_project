@@ -3,6 +3,9 @@
 
 void Scene::readScene()
 {
+    std::vector<Sphere> sphereVector;
+    std::vector<Plane> planeVector;
+    std::vector<Light> lightVector;
     fileReaderSecondTry("sampleFile.txt");
     for(int i = 0;i < numberOfSpheres;i++) {
         // create sphere object
@@ -14,6 +17,7 @@ void Scene::readScene()
         Sphere sphere();
         sphere.setRadius(rad);
         sphere.setCenter(cent);
+        sphereVector.push_back(sphere);
     }
     for(int j = 0;j < numberOfPlanes;j++) {
         // create plane object
@@ -28,6 +32,7 @@ void Scene::readScene()
         Plane plane();
         plane.setPoint(p);
         plane.setNormal(n);
+        planeVector.push_back(plane);
     }
     for(int k = 0;k < numberOfLights;k++) {
         glm::vec3 l;
@@ -36,6 +41,7 @@ void Scene::readScene()
         l[2] = lights[k][2];
         Light light();
         light.setPosition(l);
+        lightVector.push_back(light);
     }
 
 

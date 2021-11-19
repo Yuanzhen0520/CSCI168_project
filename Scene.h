@@ -1,5 +1,6 @@
 #ifndef _SCENE_H_
 #define _SCENE_H_
+#include <vector>
 
 #include "light.h"
 #include "Sphere.h"
@@ -8,15 +9,23 @@
 
 class Scene {
   public:
-    Scene (Light l, Sphere s, Camera c,Plane p):
+    Scene (std::vector<Light> l, std::vector<Sphere> s, Camera c,std::vector<Plane> p):
     l{l}, s{s}, c{c}, p{p} {}
     
+    std::vector<Light> getL() { return l; }
+    std::vector<Sphere> getS() { return s; }
+    Camera getC() { return c; }
+    std::vector<Plane> getP() {return p; }
     void fileReaderSecondTry(const char *filename);
+    void setL(std::vector<Light> light) { l = light;}
+    void setS(std::vector<Sphere> sphere) { s = sphere;}
+    void setC(Camera camera) { c = camera;}
+    void setP(std::vector<Plane> plane) { p = plane;}
   private:
-    Light l;
-    Sphere s;
+    std::vector<Light> l;
+    std::vector<Sphere> s;
     Camera c;
-    Plane p;
+    std::vector<Plane> p;
 };
 
 #endif
