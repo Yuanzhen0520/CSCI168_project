@@ -19,9 +19,9 @@ Material() :
     {}
 
 struct Intensity{
-  glm::vec4 iA;
-  glm::vec4 iD;
-  glm::vec4 iS;
+  glm::vec3 iA;
+  glm::vec3 iD;
+  glm::vec3 iS;
 };
 
 Intensity():
