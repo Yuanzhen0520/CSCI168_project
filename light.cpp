@@ -4,7 +4,7 @@ glm:vec3 Light::multipleLights(Material_m, glm::vec3_p,glm::vec3_n,glm:::vec3_d,
   //ambient light
   
   glm::vec3IA;
-  IA = _m.kA* iA
+  IA = _m.kA * iA
     
     //Lambertian Shading 
   glm:vec3 ID; 
@@ -16,5 +16,5 @@ glm:vec3 Light::multipleLights(Material_m, glm::vec3_p,glm::vec3_n,glm:::vec3_d,
   h = glm::normalize(c.Eye -_p)+ _d);
   IS = _m.kS * iS * pow(std::max(0,glm::dot(_cEye,h)),_m.shininess);
   
-  return IA +ID +IS
+  return IA + ID + IS
   }
