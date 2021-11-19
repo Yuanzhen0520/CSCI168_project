@@ -5,9 +5,9 @@
 /// @brief Material
 ////////////////////////////////////////////////////////////////////////////////
 struct Material {
-    glm::vec3 ambient;
-    glm::vec3 diffuse;
-    glm::vec3 specular;
+    glm::ve4 ambient;
+    glm::vec4 diffuse;
+    glm::vec4 specular;
     float shininess;
 };
 
