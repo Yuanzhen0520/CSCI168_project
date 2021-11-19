@@ -11,13 +11,12 @@ struct Material {
     float shininess;
 };
 
-Material() : {
+Material() : 
     ambient(0.0f ,0.2f ,0.2f ,0.3f)
     diffuse( 0.0f ,0.2f ,0.2f ,0.3f)
     specular( 0.0f, 0.0f, 0.0f, 1.0f)
     shininess(1.0f)
-    
-    }
+    {}
 
 /* 
 struct Material{
