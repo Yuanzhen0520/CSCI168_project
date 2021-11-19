@@ -5,7 +5,7 @@
 /// @brief Material
 ////////////////////////////////////////////////////////////////////////////////
 struct Material {
-    glm::ve4 kA;
+    glm::vec4 kA;
     glm::vec4 kD;
     glm::vec4 kS;
     float shininess;
