@@ -1,4 +1,4 @@
-RayTracer.o: RayTracer.cpp RayTracer.h GLInclude.h \
+Scene.o: Scene.cpp Scene.h light.h GLInclude.h \
   /usr/local/include/GLFW/glfw3.h /usr/local/include/glm/glm.hpp \
   /usr/local/include/glm/detail/_fixes.hpp \
   /usr/local/include/glm/detail/setup.hpp \
@@ -533,6 +533,5 @@ RayTracer.o: RayTracer.cpp RayTracer.h GLInclude.h \
   /usr/local/include/glm/./gtx/../vec4.hpp \
   /usr/local/include/glm/./gtx/../mat2x2.hpp \
   /usr/local/include/glm/./gtx/range.hpp \
-  /usr/local/include/glm/./gtx/../gtc/type_ptr.hpp Renderer.h Scene.h \
-  light.h Material.h Sphere.h Collision.h Object.h Ray.h plane.h \
-  camera.h
+  /usr/local/include/glm/./gtx/../gtc/type_ptr.hpp Material.h Sphere.h \
+  Collision.h Object.h Ray.h plane.h camera.h fileReader2.h

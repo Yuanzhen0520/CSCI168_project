@@ -10,11 +10,13 @@ std::vector<glm::vec4> spheres;
 std::vector<glm::vec3> planePoints;
 std::vector<glm::vec3> planeNormals;
 std::vector<glm::vec3> lights;
+int numberOfSpheres,numberOfPlanes,numberOfLights,numberOfCameras;
 
 void fileReaderSecondTry(const char *filename) {
+    // need to take material as input too, says i can use .mtl file as secondary file
     std::ifstream sceneFile (filename);
     int v1,v2,v3,v4,v5,v6,v7;
-    int numberOfSpheres,numberOfPlanes,numberOfLights,numberOfCameras;
+    //int numberOfSpheres,numberOfPlanes,numberOfLights,numberOfCameras;
     while (sceneFile >> v1 >> v2 >> v3 >> v4 >> v5 >> v6 >> v7) {
         if(v1 == 0) {     // spheres begin with 0. Start reading at 4th value
             glm::vec4 curSphere = glm::vec4(v4,v5,v6,v7);

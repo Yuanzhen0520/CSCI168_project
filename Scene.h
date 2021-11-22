@@ -9,21 +9,15 @@
 
 class Scene {
   public:
-    //std::vector<Light> l, std::vector<Sphere> s, Camera c,std::vector<Plane> p    this was inside ()
-    Scene (std::vector<Light> l, std::vector<Sphere> s, Camera c,std::vector<Plane> p):
-    l{l}, s{s}, c{c}, p{p} {}
+    Scene (const std::vector<Light>& _l, const std::vector<Sphere>& _s, const Camera& _c,const std::vector<Plane>& _p):
+    l{_l}, s{_s}, c{_c}, p{_p} {}
     Scene () {}
-    Scene readScene ();
+    static Scene readScene ();
     
-    std::vector<Light> getL() { return l; }
-    std::vector<Sphere> getS() { return s; }
-    Camera getC() { return c; }
-    std::vector<Plane> getP() {return p; }
-    void fileReaderSecondTry(const char *filename);
-    void setL(std::vector<Light> light) { l = light;}
-    void setS(std::vector<Sphere> sphere) { s = sphere;}
-    void setC(Camera camera) { c = camera;}
-    void setP(std::vector<Plane> plane) { p = plane;}
+    const std::vector<Light>& getL() const { return l; }
+    const std::vector<Sphere>& getS() const { return s; }
+    const Camera& getC() const { return c; }
+    const std::vector<Plane>& getP() const {return p; }
   private:
     std::vector<Light> l;
     std::vector<Sphere> s;

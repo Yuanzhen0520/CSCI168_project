@@ -28,12 +28,16 @@
 
 class Sphere{
   public:
-    float getRadius() { return radius; }
-    glm::vec3 getCenter() { return center; }
-    void setRadius(float r) { radius = r; }
-    void setCenter(glm::vec3 c) { center = c; }
+    Sphere(const float& r,const glm::vec3& c):
+    radius{r}, center{c} {}
+    const float getRadius() const { return radius; }
+    const glm::vec3 getCenter() const { return center; }
+    const Material getMaterial() const { return m_material;}
+
+    Collision collide(const Ray& _ray) const;
   private:
     float radius;
     glm::vec3 center;
+    Material m_material;
 };
 #endif

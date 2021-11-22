@@ -38,6 +38,9 @@ INCL = $(GL_INCL)
 LIBS = $(GL_LIBS)
 
 OBJS = \
+       Scene.o \
+       Sphere.o \
+       RayTracer.o \
        main.o
 
 DEPS = ${OBJS:%.o=%.d}
