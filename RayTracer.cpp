@@ -9,17 +9,16 @@ void RayTracer::render(const Scene& _scene) const {
     
   // int g_width = RayTracer.fWidth;
   // for each column i do
-    for(int i = 0; i< 768 ; i++) //height
+  /*  for(int i = 0; i< 768 ; i++) //height
   //   for each row j do
       for( int j = 0; i < 1360; j++) {
-        glm:vec3 x =(j, i, 0.f); 
+        glm::vec3 x =(j, i, 0.f); 
         glm::vec3 y = (0.f, 0.f, 1.f);
         const Ray ray(x,y);
         Collision c = Sphere::collide(ray);
-        if(c.m_type = kHit){
+        if(c.m_type == kHit){
         }
-      }
-}
+      }*/
   //     generate a ray origin and direction
   //     
   //     find the first intersection point of the ray
