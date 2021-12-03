@@ -38,6 +38,7 @@ INCL = $(GL_INCL)
 LIBS = $(GL_LIBS)
 
 OBJS = \
+       light.o \
        Scene.o \
        Sphere.o \
        RayTracer.o \

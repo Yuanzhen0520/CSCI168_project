@@ -5,9 +5,9 @@
 /// @brief Material
 ////////////////////////////////////////////////////////////////////////////////
 struct Material {
-    glm::vec4 kA;
-    glm::vec4 kD;
-    glm::vec4 kS;
+    glm::vec3 kA;
+    glm::vec3 kD;
+    glm::vec3 kS;
     float shininess;
 };
 
