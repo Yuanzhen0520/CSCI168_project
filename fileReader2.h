@@ -4,7 +4,7 @@
 #include <sstream>
 #include <vector>
 #include "Scene.h"
-
+#include <iostream>
 using namespace std;
 
 std::vector<glm::vec4> spheres;
