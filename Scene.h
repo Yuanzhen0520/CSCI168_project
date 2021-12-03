@@ -18,6 +18,9 @@ class Scene {
     const std::vector<Sphere>& getS() const { return s; }
     const Camera& getC() const { return c; }
     const std::vector<Plane>& getP() const {return p; }
+  //int numberofSpheres; 
+  //int numberofLights; 
+  //int numberofPlanes; 
   private:
     std::vector<Light> l;
     std::vector<Sphere> s;
