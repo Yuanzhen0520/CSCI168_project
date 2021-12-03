@@ -19,7 +19,7 @@ class Renderer {
     ////////////////////////////////////////////////////////////////////////////
     /// @brief Render a scene
     /// @param _scene Scene
-    virtual void render(const Scene& _scene) const = 0;
+    virtual void render(const Scene& _scene,int g_height, int g_width) const = 0;
 };
 
 #endif

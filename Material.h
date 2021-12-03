@@ -23,6 +23,7 @@ struct Intensity{
   glm::vec3 iD;
   glm::vec3 iS;
 };
+
 /*
 Intensity():
  iA(0.1f, 0.1f, 0.1f)

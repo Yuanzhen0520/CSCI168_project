@@ -26,7 +26,7 @@
     Material m_material; ///< Material
 };*/
 
-class Sphere{
+class Sphere : public Object{
   public:
     Sphere(const float& r,const glm::vec3& c):
     radius{r}, center{c} {}
@@ -34,7 +34,8 @@ class Sphere{
     const glm::vec3 getCenter() const { return center; }
     const Material getMaterial() const { return m_material;}
 
-    Collision collide(const Ray& _ray) const;
+    Collision collide(const Ray& _ray) const override; // should have override at the end, but produces error if it is there:
+                                              // only virtual member functions can be marked 'override'
   private:
     float radius;
     glm::vec3 center;

@@ -4,7 +4,10 @@
 void RayTracer::clear() const {
 }
 
-void RayTracer::render(const Scene& _scene) const {
+void RayTracer::render(const Scene& _scene,int g_height, int g_width) const {
+  // temporary declaration of g_width and g_height so that i can test other bugs
+  //int g_height = 1360; // CHANGE LATER
+  //int g_width = 768; // CHANGE THIS LATER
   // int g_height = RayTracer.fHeight;
     
   // int g_width = RayTracer.fWidth;
