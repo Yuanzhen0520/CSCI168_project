@@ -40,6 +40,28 @@ void RayTracer::render(const Scene& _scene,int g_height, int g_width) const {
                            
     }
   }*/
+  
+  glm::vec3 RayTracer::trace(const Ray &ray, const vector<Object> o, const glm::vec3 &_cEye){
+  Object ob;
+  float minDist = INFINITY;
+  for(int i = 0; i < o.size(); i++){
+      Collision c = o[i].collide(ray);
+      if(c.Type == kHit){
+        float dist = glm::distance(ray.getO(), c.m_x);
+        if(dist < minDist){
+          ob = o[i];
+          minDist = dist;
+        }
+      }
+  }
+  if(ob == NULL) return glm::vec3(0.0f,0.0f,0.0f);
+  Collision c = ob.collide(ray);
+  Light l(c.m_x);
+  return multiplieLights(l, c.m_material, c.m_x. c.m_normal, _cEye);
+}
+  
+  
+  
   float d = 100;
   float t = d*tan(25.5);
   float b = -t;
