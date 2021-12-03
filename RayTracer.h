@@ -7,13 +7,14 @@
 // Engine
 #include "Renderer.h"
 #include "Scene.h"
+#include "Ray.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief Ray tracer
 ////////////////////////////////////////////////////////////////////////////////
 class RayTracer : public Renderer {
   public:
-
+    glm::vec3 trace(const Ray &ray, const std::vector<Object> o, const glm::vec3 &_cEye) const;
     void clear() const override;
     void render(const Scene& _scene,int g_height,int g_width) const override;
 

@@ -11,6 +11,7 @@ class Plane : public Object {
         pointP{p}, normal{n} {}
         glm::vec3 getN() { return normal; }
         glm::vec3 getP() { return pointP; }
+        const Material* getMaterial() const { return m_material;}
         /*void setNormal(glm::vec3 norm) { normal = norm;}
         void setPoint(glm::vec3 p) { pointP = p;}*/
 
@@ -20,6 +21,7 @@ class Plane : public Object {
     private:
         glm::vec3 normal;
         glm::vec3 pointP;
+        const Material* m_material;
 
 };
 #endif

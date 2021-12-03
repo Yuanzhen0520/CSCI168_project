@@ -29,7 +29,7 @@ struct Collision {
   Type                m_type; ///< Type of collision object
   glm::vec3              m_x; ///< Point of collision
   glm::vec3         m_normal; ///< Normal at collision
-  const Material* m_material; ///< Material of surface
+  const Material*        m_material; ///< Material of surface
 };
 
 #endif

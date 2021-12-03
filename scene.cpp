@@ -11,7 +11,7 @@ Scene Scene::readScene()
         // create sphere object
         float rad = spheres[i][0];
         glm::vec3 cent(spheres[i][1],spheres[i][2],spheres[i][3]);
-        Sphere sphere(rad,cent);
+        Sphere sphere(rad,cents);
         sphereVector.push_back(sphere);
     }
     for(int j = 0;j < numberOfPlanes;j++) {

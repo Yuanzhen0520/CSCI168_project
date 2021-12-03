@@ -18,11 +18,6 @@ struct Material {
     shininess(1.0f)
     {}
 */
-struct Intensity{
-  glm::vec3 iA;
-  glm::vec3 iD;
-  glm::vec3 iS;
-};
 
 /*
 Intensity():

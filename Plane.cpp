@@ -4,7 +4,7 @@
 Collision Plane::collide(const Ray& _ray) const{
     int t,temp2,temp3;
     glm::vec3 temp1,collisionPoint,collisionNormal;
-    Material* planeMaterial;
+    const Material* planeMaterial;
     //vec3s _o _d _n _a
     // _o is ray origin
     // _d is ray direction
