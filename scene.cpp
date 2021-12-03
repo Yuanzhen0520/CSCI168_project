@@ -26,9 +26,9 @@ Scene Scene::readScene()
         Light light(l);
         lightVector.push_back(light);
     }
-    glm::vec3 eye (0,0,0);
+    /*glm::vec3 eye (0,0,0);
     glm::vec3 at (0,0,-1);
-    glm::vec3 up (0,1,0);
+    glm::vec3 up (0,1,0);*/
     Camera camera;
     Scene scene(lightVector,sphereVector,camera,planeVector);
     return scene;
