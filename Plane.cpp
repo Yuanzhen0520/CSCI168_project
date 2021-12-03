@@ -1,6 +1,7 @@
-#include "Plane.h"
+#include "plane.h"
+#include "Ray.h"
 
-Collision Plane::collide(const Ray& _ray) const {
+Collision Plane::collide(const Ray& _ray) const{
     int t,temp2,temp3;
     glm::vec3 temp1,collisionPoint,collisionNormal;
     Material* planeMaterial;

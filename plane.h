@@ -14,7 +14,8 @@ class Plane : public Object {
         /*void setNormal(glm::vec3 norm) { normal = norm;}
         void setPoint(glm::vec3 p) { pointP = p;}*/
 
-        Collision collide(const Ray& _ray) const override { return Collision(); }
+        Collision collide(const Ray& _ray) const override;
+        // { return Collision(); }     this was at end of previous line
 
     private:
         glm::vec3 normal;

@@ -41,6 +41,7 @@ OBJS = \
        light.o \
        Scene.o \
        Sphere.o \
+       Plane.o \
        RayTracer.o \
        main.o
 
