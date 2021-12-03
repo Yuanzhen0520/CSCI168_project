@@ -6,14 +6,17 @@ Collision Plane::collide(const Ray& _ray) const{
     glm::vec3 temp1,collisionPoint,collisionNormal;
     Material* planeMaterial;
     //vec3s _o _d _n _a
-    glm::vec3 _o = glm::vec3(0,0,0);  // test values
-    glm::vec3 _d = glm::vec3(3,5,-1); // test values
-    glm::vec3 _n = glm::vec3(0,1,0);  // test values
-    glm::vec3 _a = glm::vec3(0,-1,0); // test values
+    // _o is ray origin
+    // _d is ray direction
+    // _n is plane normal
+    // _a is plane point
+    glm::vec3 _o = _ray.getO();
+    glm::vec3 _d = _ray.getD();
+    glm::vec3 _n = normal;
+    glm::vec3 _a = pointP;
+   
     // subtraction
-    temp1[0] = _a[0] - _o[0];
-    temp1[1] = _a[1] - _o[1];
-    temp1[2] = _a[2] - _o[2];
+    temp1 = _a - _o;
 
     // dot product
     temp2 = temp1[0]*_n[0] + temp1[1]*_n[1] + temp1[2]*_n[2];
