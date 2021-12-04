@@ -1,0 +1,21 @@
+Team members:
+  Hannah Kareti
+  William Peng
+  Brett Rimmer
+  Remy Zhang
+
+Known bugs & Missing features:
+
+Features' main contributors:
+
+Extra features:
+
+Collaborators & Outside resources:
+
+Acknowledgement:
+  I certify that I have listed above all the sources that I consulted regarding this assignment, 
+  and that I have not received or given any assistance that is contrary to the letter or the 
+  spirit of the collaboration guidelines for this assignment.
+  
+  Signature: Chi-Wei Peng, Yuanzhen Zhang, Brett Rimmer, 
+  Date:
