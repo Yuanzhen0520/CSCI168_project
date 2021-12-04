@@ -11,14 +11,14 @@ Scene Scene::readScene()
         // create sphere object
         float rad = spheres[i][0];
         glm::vec3 cent(spheres[i][1],spheres[i][2],spheres[i][3]);
-        Sphere sphere(rad,cents);
+        Sphere sphere(rad,cent,&sphereMaterials[i]);
         sphereVector.push_back(sphere);
     }
     for(int j = 0;j < numberOfPlanes;j++) {
         // create plane object
         glm::vec3 p = planePoints[j];
         glm::vec3 n = planeNormals[j];
-        Plane plane(p,n);
+        Plane plane(p,n,&planeMaterials[j]);
         planeVector.push_back(plane);
     }
     for(int k = 0;k < numberOfLights;k++) {

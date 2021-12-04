@@ -7,8 +7,8 @@
 
 class Plane : public Object {
     public: 
-        Plane(const glm::vec3& p, const glm::vec3& n):
-        pointP{p}, normal{n} {}
+        Plane(const glm::vec3& p, const glm::vec3& n, const Material* m):
+        pointP{p}, normal{n}, m_material{m} {}
         glm::vec3 getN() { return normal; }
         glm::vec3 getP() { return pointP; }
         const Material* getMaterial() const { return m_material;}

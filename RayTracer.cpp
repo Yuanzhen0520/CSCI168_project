@@ -7,7 +7,7 @@ void RayTracer::clear() const {
 
 glm::vec3 RayTracer::trace(const Ray &ray, const std::vector<Object*> o, const glm::vec3 &_cEye) const {
   //Object ob;
-  int parameter = NULL;
+  int parameter = -1;
   float minDist = INFINITY;
   for(int i = 0; i < o.size(); i++){
       Collision c = o[i]->collide(ray);
@@ -19,7 +19,7 @@ glm::vec3 RayTracer::trace(const Ray &ray, const std::vector<Object*> o, const g
         }
       }
   }
-  if(parameter == NULL) return glm::vec3(0.0f,0.0f,0.0f);
+  if(parameter == -1) return glm::vec3(0.0f,0.0f,0.0f);
   Collision c = o[parameter]->collide(ray);
   Light l(c.m_x);
   return l.multipleLights(l, (c.m_material), (c.m_x), (c.m_normal), _cEye);
@@ -42,7 +42,7 @@ void RayTracer::render(const Scene& _scene,int g_height, int g_width) const {
       glm::vec3 direction = glm::vec3(tau,sigma,-d);//need to caulculate
 
       Ray ray(o,direction);
-      vector<Object*> v;
+      vector<Object> v;
       vector<Sphere> sv = _scene.getS();
       vector<Plane>  pv = _scene.getP();
       for(int i = 0; i < sv.size(); i++){
@@ -51,7 +51,7 @@ void RayTracer::render(const Scene& _scene,int g_height, int g_width) const {
       for(int i = 0; i < pv.size(); i++){
         v.emplace_back(unique_ptr<Object*>(new Plane(pv[i].getP(), pv[i].getN(), pv[i].getMaterial())));
       }
-      glm::vec3 color = trace(ray, v, o);
+      glm::vec3 color = trace(ray, &v, o);
       double k = j*g_width + i;
       if(color[0] == 0 && color[1] == 0 && color[2] == 0) {
         g_frame[k] = glm::vec4(0.f,0.f,0.f,0.f);
