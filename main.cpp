@@ -21,6 +21,8 @@
 
 // file reader
 #include "Scene.h"
+#include "Renderer.h"
+#include "RayTracer.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Global variables - avoid these
@@ -31,6 +33,7 @@ int g_height{768};
 
 // Framebuffer
 std::unique_ptr<glm::vec4[]> g_frame{nullptr}; ///< Framebuffer
+
 
 // Frame rate
 const unsigned int FPS = 60;
@@ -81,11 +84,11 @@ draw(GLFWwindow* _window, double d_currentTime) {
 
 
   //Simple static :P
-  for(int i = 0; i < g_width*g_height; ++i)
+  /*for(int i = 0; i < g_width*g_height; ++i)
     g_frame[i] = glm::vec4(float(rand())/RAND_MAX, float(rand())/RAND_MAX,
                            float(rand())/RAND_MAX, 1.f);
 
-  glDrawPixels(g_width, g_height, GL_RGBA, GL_FLOAT, g_frame.get());
+  glDrawPixels(g_width, g_height, GL_RGBA, GL_FLOAT, g_frame.get());*/
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -172,6 +175,8 @@ main(int _argc, char** _argv) {
   // Initialize
   Scene s = Scene();
   s.readScene();
+  RayTracer r;
+  r.render(s,g_height,g_width,g_frame);
   /*Scene scene();
   scene.readScene();*/
   std::cout << "Initializing GLFWWindow" << std::endl;

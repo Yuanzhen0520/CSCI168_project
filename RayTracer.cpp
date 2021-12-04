@@ -1,11 +1,11 @@
 #include "RayTracer.h"
 
-using namespace std;
+
 
 void RayTracer::clear() const {
 }
 
-glm::vec3 RayTracer::trace(const Ray &ray, const std::vector<Object*> o, const glm::vec3 &_cEye) const {
+glm::vec3 RayTracer::trace(const Ray &ray, const vector<Object*> o, const glm::vec3 &_cEye) const {
   //Object ob;
   int parameter = -1;
   float minDist = INFINITY;
@@ -25,13 +25,12 @@ glm::vec3 RayTracer::trace(const Ray &ray, const std::vector<Object*> o, const g
   return l.multipleLights(l, (c.m_material), (c.m_x), (c.m_normal), _cEye);
 }
 
-void RayTracer::render(const Scene& _scene,int g_height, int g_width) const {
+void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr<glm::vec4[]> g_frame) const {
   float d = 100;
   float t = d*tan(25.5);
   float b = -t;
   float l = (16/9)*b;
   float r = -l;
-  std::unique_ptr<glm::vec4[]> g_frame{nullptr}; ///< Framebuffer
   g_frame = std::make_unique<glm::vec4[]>(g_width*g_height);
 
   for(int i=0; i<g_width; i++){
@@ -42,16 +41,16 @@ void RayTracer::render(const Scene& _scene,int g_height, int g_width) const {
       glm::vec3 direction = glm::vec3(tau,sigma,-d);//need to caulculate
 
       Ray ray(o,direction);
-      vector<Object> v;
+      vector<Object*> v;
       vector<Sphere> sv = _scene.getS();
       vector<Plane>  pv = _scene.getP();
       for(int i = 0; i < sv.size(); i++){
-        v.emplace_back(unique_ptr<Object*>(new Sphere(sv[i].getRadius(), sv[i].getCenter(), sv[i].getMaterial())));
+        v.emplace_back(new Sphere(sv[i].getRadius(), sv[i].getCenter(), sv[i].getMaterial()));
       }
       for(int i = 0; i < pv.size(); i++){
-        v.emplace_back(unique_ptr<Object*>(new Plane(pv[i].getP(), pv[i].getN(), pv[i].getMaterial())));
+        v.emplace_back(new Plane(pv[i].getP(), pv[i].getN(), pv[i].getMaterial()));
       }
-      glm::vec3 color = trace(ray, &v, o);
+      glm::vec3 color = trace(ray, v, o);
       double k = j*g_width + i;
       if(color[0] == 0 && color[1] == 0 && color[2] == 0) {
         g_frame[k] = glm::vec4(0.f,0.f,0.f,0.f);
