@@ -51,7 +51,6 @@ float g_framesPerSecond{0.f};
 void
 initialize(GLFWwindow* _window) {
   glClearColor(0.f, 0.f, 0.f, 1.f);
-  std::cout << "in initialize " << g_width << std::endl;
   g_frame = std::make_unique<glm::vec4[]>(g_width*g_height);
 }
 
@@ -199,13 +198,12 @@ main(int _argc, char** _argv) {
   glfwMakeContextCurrent(window);
   glfwSwapInterval(1);
 
-  std::cout << g_width << std::endl;
   glfwGetFramebufferSize(window, &g_width, &g_height);
-  std::cout << g_width << std::endl;
   glViewport(0, 0, g_width, g_height);  // Initialize viewport
 
   // Assign callback functions
   std::cout << "Assigning Callback functions" << std::endl;
+
   glfwSetFramebufferSizeCallback(window, resize);
   glfwSetKeyCallback(window, keyCallback);
 

@@ -30,17 +30,15 @@ void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr
   float b = -t;
   float l = (16/9)*b;
   float r = -l;
-  int gWidthActual = g_width/2;     // values got multiplied by 2 somehow and we can't figure it out
-  int gHeightActual = g_height/2;   // so we cheated and just divided by 2
-  g_frame = std::make_unique<glm::vec4[]>(gWidthActual*gHeightActual);
+  g_frame = std::make_unique<glm::vec4[]>(g_width*g_height);
   //std::cout << "g_width = " << g_width << std::endl;
   //std::cout << "g_height = " << g_height << std::endl;
-  for(int i=0; i<gWidthActual; i++){
+  for(int i=0; i<g_width; i++){
     //std::cout << i << std::endl;
-    for(int j=0; j<gHeightActual; j++){
+    for(int j=0; j<g_height; j++){
       //std::cout << j << std::endl;
-      float tau = l + ((r-l)*(i+0.5))/gWidthActual;
-      float sigma = b + ((t-b)*(j+0.5))/gHeightActual;
+      float tau = l + ((r-l)*(i+0.5))/g_width;
+      float sigma = b + ((t-b)*(j+0.5))/g_height;
       glm::vec3 o(0.0f, 0.0f, 0.0f);//eye
       glm::vec3 direction = glm::vec3(tau,sigma,-d);//need to caulculate
 
@@ -58,7 +56,7 @@ void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr
       v.clear();
       vector<Light> lv = _scene.getL();
       glm::vec3 color = trace(ray, v, o, lv[0]);
-      double a = j*gWidthActual + i;
+      double a = j*g_width + i;
       //std::cout << a << std::endl;
       if(color[0] == 0 && color[1] == 0 && color[2] == 0) {
         g_frame[a] = glm::vec4(0.f,0.f,0.f,0.f);
