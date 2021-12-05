@@ -12,7 +12,7 @@ class Light{
     glm::vec3 iA = glm::vec3(0.5f,0.5f,0.5f);
     glm::vec3 iD = glm::vec3(0.5f,0.5f,0.5f);
     glm::vec3 iS = glm::vec3(0.5f,0.5f,0.5f);
-    glm::vec3 multipleLights(Light _l, const Material* _m, glm::vec3 _p, glm::vec3 _n, glm::vec3 _cEye);
+    glm::vec3 multipleLights(const Material* _m, glm::vec3 _p, glm::vec3 _n, glm::vec3 _cEye);
     glm::vec3 getPosition() { return position; }
     void setPosition(glm::vec3 p) { position = p;}
   

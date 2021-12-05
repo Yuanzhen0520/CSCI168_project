@@ -1,7 +1,7 @@
 #include "Scene.h"
 #include "fileReader2.h"
 
-Scene Scene::readScene()
+void Scene::readScene()
 {
     std::vector<Sphere> sphereVector;
     std::vector<Plane> planeVector;
@@ -30,6 +30,8 @@ Scene Scene::readScene()
     glm::vec3 at (0,0,-1);
     glm::vec3 up (0,1,0);*/
     Camera camera;
-    Scene scene(lightVector,sphereVector,camera,planeVector);
-    return scene;
+    l = lightVector;
+    s = sphereVector;
+    c = camera;
+    p = planeVector;
 }

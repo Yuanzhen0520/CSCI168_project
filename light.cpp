@@ -1,11 +1,11 @@
 #include "light.h"
 
-glm::vec3 Light::multipleLights(Light _l, const Material* _m, glm::vec3 _p, glm::vec3 _n, glm::vec3 _cEye){
-  glm::vec3 _d = normalize(_l.position - _p);
+glm::vec3 Light::multipleLights(const Material* _m, glm::vec3 _p, glm::vec3 _n, glm::vec3 _cEye){
+  glm::vec3 _d = normalize(position - _p);
 
   //ambient light
   glm::vec3 lA;
-  lA = _m->kA * _l.iA;
+  lA = _m->kA * iA;
     
     //Lambertian Shading 
   glm::vec3 lD; 

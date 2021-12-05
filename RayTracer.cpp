@@ -1,11 +1,10 @@
 #include "RayTracer.h"
-
-
+#include <iostream>
 
 void RayTracer::clear() const {
 }
 
-glm::vec3 RayTracer::trace(const Ray &ray, const vector<Object*> o, const glm::vec3 &_cEye) const {
+glm::vec3 RayTracer::trace(const Ray &ray, vector<Object*> o, const glm::vec3 &_cEye, Light l) const {
   //Object ob;
   int parameter = -1;
   float minDist = INFINITY;
@@ -21,22 +20,27 @@ glm::vec3 RayTracer::trace(const Ray &ray, const vector<Object*> o, const glm::v
   }
   if(parameter == -1) return glm::vec3(0.0f,0.0f,0.0f);
   Collision c = o[parameter]->collide(ray);
-  Light l(c.m_x);
-  return l.multipleLights(l, (c.m_material), (c.m_x), (c.m_normal), _cEye);
+  o.clear();
+  return l.multipleLights((c.m_material), (c.m_x), (c.m_normal), _cEye);
 }
 
 void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr<glm::vec4[]>& g_frame) const {
-  float d = 100;
+  float d = 1;
   float t = d*tan(25.5);
   float b = -t;
   float l = (16/9)*b;
   float r = -l;
-  g_frame = std::make_unique<glm::vec4[]>(g_width*g_height);
-
-  for(int i=0; i<g_width; i++){
-    for(int j=0; j<g_height; j++){
-      float tau = l + ((r-l)*(i+0.5))/g_width;
-      float sigma = b + ((t-b)*(j+0.5))/g_height;
+  int gWidthActual = g_width/2;     // values got multiplied by 2 somehow and we can't figure it out
+  int gHeightActual = g_height/2;   // so we cheated and just divided by 2
+  g_frame = std::make_unique<glm::vec4[]>(gWidthActual*gHeightActual);
+  //std::cout << "g_width = " << g_width << std::endl;
+  //std::cout << "g_height = " << g_height << std::endl;
+  for(int i=0; i<gWidthActual; i++){
+    //std::cout << i << std::endl;
+    for(int j=0; j<gHeightActual; j++){
+      //std::cout << j << std::endl;
+      float tau = l + ((r-l)*(i+0.5))/gWidthActual;
+      float sigma = b + ((t-b)*(j+0.5))/gHeightActual;
       glm::vec3 o(0.0f, 0.0f, 0.0f);//eye
       glm::vec3 direction = glm::vec3(tau,sigma,-d);//need to caulculate
 
@@ -44,19 +48,23 @@ void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr
       vector<Object*> v;
       vector<Sphere> sv = _scene.getS();
       vector<Plane>  pv = _scene.getP();
-      for(int i = 0; i < sv.size(); i++){
-        v.emplace_back(new Sphere(sv[i].getRadius(), sv[i].getCenter(), sv[i].getMaterial()));
+      for(int k = 0; k < sv.size(); k++){
+        v.emplace_back(new Sphere(sv[k].getRadius(), sv[k].getCenter(), sv[k].getMaterial()));
       }
-      for(int i = 0; i < pv.size(); i++){
-        v.emplace_back(new Plane(pv[i].getP(), pv[i].getN(), pv[i].getMaterial()));
+      Object* testObjectPoint = v[0];
+      for(int k = 0; k < pv.size(); k++){
+        v.emplace_back(new Plane(pv[k].getP(), pv[k].getN(), pv[k].getMaterial()));
       }
-      glm::vec3 color = trace(ray, v, o);
-      double k = j*g_width + i;
+      v.clear();
+      vector<Light> lv = _scene.getL();
+      glm::vec3 color = trace(ray, v, o, lv[0]);
+      double a = j*gWidthActual + i;
+      //std::cout << a << std::endl;
       if(color[0] == 0 && color[1] == 0 && color[2] == 0) {
-        g_frame[k] = glm::vec4(0.f,0.f,0.f,0.f);
+        g_frame[a] = glm::vec4(0.f,0.f,0.f,0.f);
       }
       else {
-      g_frame[k] = glm::vec4(color[0],color[1],color[2],1.f);
+      g_frame[a] = glm::vec4(color[0],color[1],color[2],1.f);
       }
       
     }

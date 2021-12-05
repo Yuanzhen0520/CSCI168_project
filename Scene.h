@@ -12,7 +12,7 @@ class Scene {
     Scene (const std::vector<Light>& _l, const std::vector<Sphere>& _s, const Camera& _c,const std::vector<Plane>& _p):
     l{_l}, s{_s}, c{_c}, p{_p} {}
     Scene () {}
-    static Scene readScene ();
+    void readScene ();
     
     const std::vector<Light>& getL() const { return l; }
     const std::vector<Sphere>& getS() const { return s; }

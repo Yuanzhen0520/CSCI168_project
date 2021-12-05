@@ -56,6 +56,16 @@ std::vector<Material> sphereMaterials;
 int numberOfSpheres,numberOfPlanes,numberOfLights,numberOfCameras;
 
 void fileReaderSecondTry(const char *filename) {
+    spheres.clear();
+    planePoints.clear();
+    planeNormals.clear();
+    planeMaterials.clear();
+    lights.clear();
+    sphereMaterials.clear();
+    numberOfSpheres = 0;
+    numberOfPlanes = 0;
+    numberOfLights = 0;
+    numberOfCameras = 0;
     // need to take material as input too, says i can use .mtl file as secondary file
     std::ifstream sceneFile (filename);
     int v1,v2,v3,v4,v5,v6,v7,v8;
@@ -115,10 +125,10 @@ void fileReaderSecondTry(const char *filename) {
     numberOfLights = lights.size() - 1;
     numberOfCameras = 1;
 
-    cout << "Number of spheres: " << numberOfSpheres << endl;
+    /*cout << "Number of spheres: " << numberOfSpheres << endl;
     cout << "Number of planes: " << numberOfPlanes << endl;
     cout << "Number of lights: " << numberOfLights << endl;
-    /*
+    
     std::cout << "Sphere Number " << sphereNumber[3] << "  y= " << spheres[3][2] << std::endl;
     std::cout << "Plane Number " << planeNumber[2] << " py= " << planePoints[2][1] << std::endl;
     std::cout << "Sphere Number " << sphereNumber[9] << "  " << "r= " << radiiVector[9] << "  " << "cx= " << cxVector[9] << "  " << "cy= " << cyVector[9] << "  " << "cz= " << czVector[9] << "  " << std::endl;

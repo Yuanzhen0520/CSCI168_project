@@ -51,7 +51,7 @@ float g_framesPerSecond{0.f};
 void
 initialize(GLFWwindow* _window) {
   glClearColor(0.f, 0.f, 0.f, 1.f);
-
+  std::cout << "in initialize " << g_width << std::endl;
   g_frame = std::make_unique<glm::vec4[]>(g_width*g_height);
 }
 
@@ -60,8 +60,10 @@ initialize(GLFWwindow* _window) {
 ///
 /// Responsible for setting window size (viewport) and projection matrix.
 void resize(GLFWwindow* window, int _w, int _h) {
+  std::cout << "in resize before _w " << g_width << std::endl;
   g_width = _w;
   g_height = _h;
+  std::cout << "in resize after _w " << g_width << std::endl;
 
   // Viewport
   glfwGetFramebufferSize(window, &g_width, &g_height);
@@ -71,13 +73,11 @@ void resize(GLFWwindow* window, int _w, int _h) {
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief Draw function for single frame
 void
-draw(GLFWwindow* _window, double d_currentTime) {
+draw(GLFWwindow* _window, double d_currentTime, Scene s) {
   //////////////////////////////////////////////////////////////////////////////
   // Clear
   glClear(GL_COLOR_BUFFER_BIT);
 
-  Scene s = Scene();
-  s.readScene();
   RayTracer r;
   r.render(s,g_height,g_width,g_frame);
   /*for(int i = 0; i < g_width*g_height; ++i)
@@ -91,8 +91,8 @@ draw(GLFWwindow* _window, double d_currentTime) {
   /*for(int i = 0; i < g_width*g_height; ++i)
     g_frame[i] = glm::vec4(float(rand())/RAND_MAX, float(rand())/RAND_MAX,
                            float(rand())/RAND_MAX, 1.f);
-
-  glDrawPixels(g_width, g_height, GL_RGBA, GL_FLOAT, g_frame.get());*/
+*/
+  glDrawPixels(g_width, g_height, GL_RGBA, GL_FLOAT, g_frame.get());
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -102,10 +102,10 @@ run(GLFWwindow* _window) {
   using namespace std::chrono;
 
   std::cout << "Starting main loop" << std::endl;
-
+  Scene s = Scene();
+  s.readScene();
   while(!glfwWindowShouldClose(_window)) {
-    draw(_window, glfwGetTime());
-    std::cout << "draw is getting called" << endl;
+    draw(_window, glfwGetTime(),s);
     ////////////////////////////////////////////////////////////////////////////
     // Show
     glfwSwapBuffers(_window);
@@ -195,12 +195,14 @@ main(int _argc, char** _argv) {
     return 1;
   }
 
+
   glfwMakeContextCurrent(window);
   glfwSwapInterval(1);
 
+  std::cout << g_width << std::endl;
   glfwGetFramebufferSize(window, &g_width, &g_height);
+  std::cout << g_width << std::endl;
   glViewport(0, 0, g_width, g_height);  // Initialize viewport
-
 
   // Assign callback functions
   std::cout << "Assigning Callback functions" << std::endl;
