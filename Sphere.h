@@ -29,7 +29,7 @@
 class Sphere : public Object{
   public:
     Sphere(const float& r,const glm::vec3& c, const Material* m):
-    radius{r}, center{c}, m_material{m} {}
+    radius(r), center(c), m_material(m) {};
     const float getRadius() const { return radius; }
     const glm::vec3 getCenter() const { return center; }
     const Material* getMaterial() const { return m_material;}

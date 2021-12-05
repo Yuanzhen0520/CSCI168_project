@@ -25,7 +25,7 @@ glm::vec3 RayTracer::trace(const Ray &ray, const vector<Object*> o, const glm::v
   return l.multipleLights(l, (c.m_material), (c.m_x), (c.m_normal), _cEye);
 }
 
-void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr<glm::vec4[]> g_frame) const {
+void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr<glm::vec4[]>& g_frame) const {
   float d = 100;
   float t = d*tan(25.5);
   float b = -t;

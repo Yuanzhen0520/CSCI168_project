@@ -76,8 +76,12 @@ draw(GLFWwindow* _window, double d_currentTime) {
   // Clear
   glClear(GL_COLOR_BUFFER_BIT);
 
-  for(int i = 0; i < g_width*g_height; ++i)
-    g_frame[i] = glm::vec4(0.f, 0.4f, 0.f, 0.f);
+  Scene s = Scene();
+  s.readScene();
+  RayTracer r;
+  r.render(s,g_height,g_width,g_frame);
+  /*for(int i = 0; i < g_width*g_height; ++i)
+    g_frame[i] = glm::vec4(0.f, 0.4f, 0.f, 0.f);*/
 
   //////////////////////////////////////////////////////////////////////////////
   // Draw
@@ -101,6 +105,7 @@ run(GLFWwindow* _window) {
 
   while(!glfwWindowShouldClose(_window)) {
     draw(_window, glfwGetTime());
+    std::cout << "draw is getting called" << endl;
     ////////////////////////////////////////////////////////////////////////////
     // Show
     glfwSwapBuffers(_window);
@@ -173,10 +178,7 @@ int
 main(int _argc, char** _argv) {
   //////////////////////////////////////////////////////////////////////////////
   // Initialize
-  Scene s = Scene();
-  s.readScene();
-  RayTracer r;
-  r.render(s,g_height,g_width,g_frame);
+  
   /*Scene scene();
   scene.readScene();*/
   std::cout << "Initializing GLFWWindow" << std::endl;
