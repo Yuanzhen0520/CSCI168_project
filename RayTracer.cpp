@@ -4,23 +4,28 @@
 void RayTracer::clear() const {
 }
 
-glm::vec3 RayTracer::trace(const Ray &ray, vector<Object*> o, const glm::vec3 &_cEye, Light l) const {
+glm::vec3 RayTracer::trace(const Ray &ray,const vector<Object*> o, const glm::vec3 &_cEye, Light l) const {
   //Object ob;
+  
   int parameter = -1;
   float minDist = INFINITY;
   for(int i = 0; i < o.size(); i++){
-      Collision c = o[i]->collide(ray);
-      if(c.m_type == Collision::Type::kHit){
-        float dist = glm::distance(ray.getO(), c.m_x);
-        if(dist < minDist){
-          parameter = i;
-          minDist = dist;
-        }
+    Collision c = o[i]->collide(ray);
+    if(c.m_type == Collision::Type::kHit){
+      //std::cout << "Hit" << std::endl;
+      float dist = glm::distance(ray.getO(), c.m_x);
+      if(dist < minDist){
+        parameter = i;
+        minDist = dist;
       }
+    }
+    else { 
+      //std::cout << "Miss" << std::endl;
+    }
   }
-  if(parameter == -1) return glm::vec3(0.0f,0.0f,0.0f);
+  //std::cout << "Parameter = " << parameter << std::endl;
+  if(parameter == -1 || parameter > o.size() - 1) return glm::vec3(0.0f,0.0f,0.0f);
   Collision c = o[parameter]->collide(ray);
-  o.clear();
   return l.multipleLights((c.m_material), (c.m_x), (c.m_normal), _cEye);
 }
 
@@ -46,16 +51,19 @@ void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr
       vector<Object*> v;
       vector<Sphere> sv = _scene.getS();
       vector<Plane>  pv = _scene.getP();
-      for(int k = 0; k < sv.size(); k++){
+      for(int k = 0; k < sv.size()-1; k++){
         v.emplace_back(new Sphere(sv[k].getRadius(), sv[k].getCenter(), sv[k].getMaterial()));
       }
       Object* testObjectPoint = v[0];
-      for(int k = 0; k < pv.size(); k++){
+      for(int k = 0; k < pv.size()-1; k++){
         v.emplace_back(new Plane(pv[k].getP(), pv[k].getN(), pv[k].getMaterial()));
       }
-      v.clear();
       vector<Light> lv = _scene.getL();
       glm::vec3 color = trace(ray, v, o, lv[0]);
+      for(auto p : v){
+        delete p;
+      }
+      v.clear();
       double a = j*g_width + i;
       //std::cout << a << std::endl;
       if(color[0] == 0 && color[1] == 0 && color[2] == 0) {
