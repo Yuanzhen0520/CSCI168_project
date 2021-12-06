@@ -5,7 +5,8 @@ Team members:
   Remy Zhang
 
 Known bugs & Missing features:
-
+  Portion of white in the plane 
+  
 Features' main contributors:
   Reading a scene from an external file: Chi-Wei  , Brett , Yuanzhen , Hannah 
   Ray generation in perspective view: Chi-Wei  , Brett , Yuanzhen , Hannah 
@@ -14,8 +15,10 @@ Features' main contributors:
   Shadow determination in the lighting computations + removing shadow acne: Chi-Wei  , Brett , Yuanzhen , Hannah 
 
 Extra features:
+  Linear attenuation
 
 Collaborators & Outside resources:
+  N/A
 
 Acknowledgement:
   I certify that I have listed above all the sources that I consulted regarding this assignment, 
