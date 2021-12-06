@@ -114,7 +114,14 @@ void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr
 
 /* Shadow */ 
       /*
-      Shadow */
+      class Shadow{
+      public:
+      Shadow(GLfloat distance, bool shade):distance(distance) shade(shade) {} 
+      
+      private:
+      GLfloat distance; 
+      bool shade;
+      }*/
 
 
 
