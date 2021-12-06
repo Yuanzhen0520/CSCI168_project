@@ -5,6 +5,7 @@ Team members:
   Remy Zhang
 
 Known bugs & Missing features:
+Portion of white in the plane 
   
   
 Features' main contributors:
