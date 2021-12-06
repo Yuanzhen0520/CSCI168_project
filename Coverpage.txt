@@ -7,6 +7,11 @@ Team members:
 Known bugs & Missing features:
 
 Features' main contributors:
+  Reading a scene from an external file:
+  Ray generation in perspective view:
+  Collision of rays with a single infinite ground plane and a set of spheres:
+  Ambient, diffuse, and specular lighting from multiple point lights:
+  Shadow determination in the lighting computations:
 
 Extra features:
 
@@ -18,4 +23,4 @@ Acknowledgement:
   spirit of the collaboration guidelines for this assignment.
   
   Signature: Chi-Wei Peng, Yuanzhen Zhang, Brett Rimmer, Hannah Kareti
-  Date:
+  Date: 12/5/2021
