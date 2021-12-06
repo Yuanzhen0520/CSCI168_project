@@ -68,7 +68,8 @@ void fileReaderSecondTry(const char *filename) {
     numberOfCameras = 0;
     // need to take material as input too, says i can use .mtl file as secondary file
     std::ifstream sceneFile (filename);
-    int v1,v2,v3,v4,v5,v6,v7,v8;
+    float v1,v2,v3,v4,v5,v6,v7;
+    int v8;
     //int numberOfSpheres,numberOfPlanes,numberOfLights,numberOfCameras;
     while (sceneFile >> v1 >> v2 >> v3 >> v4 >> v5 >> v6 >> v7 >> v8) {
         if(v1 == 0) {     // spheres begin with 0. Start reading at 4th value

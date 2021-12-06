@@ -96,19 +96,29 @@ void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr
       else{ 
         Collision c = v[parameter]->collide(ray);
         glm::vec3 colors = glm::vec3(0,0,0);
+        Light globalLight = lv[0];
+        colors += globalLight.ambientLightReturner((c.m_material), (c.m_x), (c.m_normal), o);
         for(int i = 0; i < lv.size(); i++){
           Light l = lv[i];
           colors += l.multipleLights((c.m_material), (c.m_x), (c.m_normal), o);
-          float diffuseColor = colors[1];
-          float specularColor = colors[2];
-          float ambientColor = colors[0];
+          colors[0] = (colors[0] > 1) ? 1 : (colors[0] < 0) ? 0 : colors[0];
+          colors[1] = (colors[1] > 1) ? 1 : (colors[1] < 0) ? 0 : colors[1];
+          colors[2] = (colors[2] > 1) ? 1 : (colors[2] < 0) ? 0 : colors[2];
+          glm::vec3 ambientColor = l.ambientLightReturner(c.m_material,c.m_x,c.m_normal,o);
+          glm::vec3 diffuseColor = l.diffuseLightReturner(c.m_material,c.m_x,c.m_normal,o);
+          glm::vec3 specularColor = l.specularLightReturner(c.m_material,c.m_x,c.m_normal,o);
           // shadow rays
           Ray shadowRay = Ray(c.m_x,c.m_x-l.getPosition());
           for(int s = 0;s<v.size();s++) {
+            Ray newRay(c.m_x,c.m_normal);
+            glm::vec3 newRayOrigin = newRay.at(0.000001);
+            Ray shadowRay = Ray(newRayOrigin,c.m_x-l.getPosition());
             Collision sc = v[s]->collide(shadowRay);
             if(sc.m_type == Collision::Type::kHit) {
-              colors[1] -= diffuseColor;
-              colors[2] -= specularColor;
+
+              colors -= 1.2*ambientColor;
+              //colors -= 0.4*diffuseColor;
+              colors -= 0.4*specularColor;
             }
           }
         }
