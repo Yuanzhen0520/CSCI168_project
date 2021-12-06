@@ -7,7 +7,6 @@ Team members:
 Known bugs & Missing features:
 Portion of white in the plane 
   
-  
 Features' main contributors:
   Reading a scene from an external file: Chi-Wei  , Brett , Yuanzhen , Hannah 
   Ray generation in perspective view: Chi-Wei  , Brett , Yuanzhen , Hannah 
