@@ -10,7 +10,7 @@ Features' main contributors:
   Reading a scene from an external file: Chi-Wei  , Brett , Yuanzhen , Hannah 
   Ray generation in perspective view: Chi-Wei  , Brett , Yuanzhen , Hannah 
   Collision of rays with a single infinite ground plane and a set of spheres: Chi-Wei , Brett , Hannah , Yuanzhen
-  Ambient, diffuse, and specular lighting from multiple point lights: Yanzhen , Hannah Chi-Wei  , Brett , 
+  Ambient, diffuse, and specular lighting from multiple point lights: Yanzhen , Hannah , Chi-Wei  , Brett , 
   Shadow determination in the lighting computations: Chi-Wei  , Brett , Yuanzhen , Hannah 
 
 Extra features:
