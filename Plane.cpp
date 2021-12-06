@@ -3,7 +3,7 @@
 
 Collision Plane::collide(const Ray& _ray) const{
     float t,temp2,temp3;
-    glm::vec3 temp1,collisionPoint,collisionNormal;
+    glm::vec3 temp1,collisionPoint;
     const Material* planeMaterial;
     //vec3s _o _d _n _a
     // _o is ray origin
@@ -19,15 +19,13 @@ Collision Plane::collide(const Ray& _ray) const{
     temp1 = _a - _o;
 
     // dot product
-    temp2 = temp1[0]*_n[0] + temp1[1]*_n[1] + temp1[2]*_n[2];
-    temp3 = _d[0]*_n[0] + _d[1]*_n[1] + _d[2]*_n[2];
+    temp2 = glm::dot(temp1,_n);
+    temp3 = glm::dot(_d,_n);
     t = temp2/temp3;
     if(temp3 != 0 && t>0) {
         // collision
-        collisionPoint[0] = _o[0] + t*_d[0];
-        collisionPoint[1] = _o[1] + t*_d[1];
-        collisionPoint[2] = _o[2] + t*_d[2];
-        return Collision(collisionPoint,collisionNormal,planeMaterial);
+        collisionPoint = _ray.at(t);
+        return Collision(collisionPoint,normal,m_material);
     }
     else {
         // no collision

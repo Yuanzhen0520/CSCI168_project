@@ -31,7 +31,7 @@ glm::vec3 RayTracer::trace(const Ray &ray,const vector<Object*> o, const glm::ve
 
 void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr<glm::vec4[]>& g_frame) const {
   float d = 1;
-  float t = d*tan(25.5);
+  float t = d*tan(22.5);
   float b = -t;
   float l = (16/9)*b;
   float r = -l;
@@ -50,28 +50,84 @@ void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr
       Ray ray(o,direction);
       vector<Object*> v;
       vector<Sphere> sv = _scene.getS();
-      vector<Plane>  pv = _scene.getP();
-      for(int k = 0; k < sv.size()-1; k++){
-        v.emplace_back(new Sphere(sv[k].getRadius(), sv[k].getCenter(), sv[k].getMaterial()));
-      }
-      Object* testObjectPoint = v[0];
-      for(int k = 0; k < pv.size()-1; k++){
+      vector<Plane> pv = _scene.getP();
+      //std::cout << "svSize: " << sv.size() << std::endl;
+      //std::cout << "pvSize: " << pv.size() << std::endl;
+      for(int k = 0; k < pv.size(); k++){
         v.emplace_back(new Plane(pv[k].getP(), pv[k].getN(), pv[k].getMaterial()));
       }
+      for(int k = 0; k < sv.size(); k++){
+        v.emplace_back(new Sphere(sv[k].getRadius(), sv[k].getCenter(), sv[k].getMaterial()));
+      }
       vector<Light> lv = _scene.getL();
-      glm::vec3 color = trace(ray, v, o, lv[0]);
+      int a = j*g_width + i;
+      //glm::vec3 color = trace(ray, v, o, lv[0]);
+
+ 
+
+      //Ray direction as colors
+     /*glm::vec3 rayDirectionNormal = glm::normalize(direction);
+      glm::vec3 tempVec3 = rayDirectionNormal + glm::vec3(1.f,1.f,1.f)/2;
+      glm::vec4 rayColor = glm::vec4(tempVec3,1.f);
+      g_frame[a] = rayColor; */
+
+      // where we will test trace without a function
+
+
+      //std::cout << v.size() << std::endl;
+      int parameter = -1;
+      float minDist = INFINITY;
+      for(int z = 0; z < v.size(); z++){
+        Collision c = v[z]->collide(ray);
+        if(c.m_type == Collision::Type::kHit){
+          //std::cout << "Hit" << std::endl;
+          float dist = glm::distance(ray.getO(), c.m_x);
+          if(dist < minDist){
+            parameter = z;
+            minDist = dist;
+          }
+        }
+        else { 
+          //std::cout << "Miss" << std::endl;
+        }
+      }
+      //std::cout << "Parameter = " << parameter << std::endl;
+      if(parameter == -1) g_frame[a] = glm::vec4(0.f,0.f,0.f,0.f);
+      else{ 
+        Collision c = v[parameter]->collide(ray);
+        glm::vec3 colors = glm::vec3(0,0,0);
+        for(int i = 0; i < lv.size(); i++){
+          Light l = lv[i];
+          colors += l.multipleLights((c.m_material), (c.m_x), (c.m_normal), o);
+        }
+        g_frame[a] = glm::vec4(colors, 1.f);
+      }
       for(auto p : v){
         delete p;
       }
       v.clear();
-      double a = j*g_width + i;
+      
+      
+
+
+
+
+
+
+
+
+
+
+      // end of trace function w/out a function
+
+
       //std::cout << a << std::endl;
-      if(color[0] == 0 && color[1] == 0 && color[2] == 0) {
+      /*if(color[0] == 0 && color[1] == 0 && color[2] == 0) {
         g_frame[a] = glm::vec4(0.f,0.f,0.f,0.f);
       }
       else {
       g_frame[a] = glm::vec4(color[0],color[1],color[2],1.f);
-      }
+      }*/
       
     }
   }
