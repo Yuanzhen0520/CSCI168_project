@@ -11,7 +11,6 @@ glm::vec3 Light::multipleLights(const Material* _m, glm::vec3 _p, glm::vec3 _n, 
     //Lambertian Shading 
   glm::vec3 lD; 
   float valueToPass,valueToPass2;
-  std::cout << "_n: " << _n[2] << std::endl;
   if(glm::dot(_n,_d)>0) {
     valueToPass = glm::dot(_n,_d);
   }

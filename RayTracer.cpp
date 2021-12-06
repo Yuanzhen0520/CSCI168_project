@@ -99,6 +99,18 @@ void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr
         for(int i = 0; i < lv.size(); i++){
           Light l = lv[i];
           colors += l.multipleLights((c.m_material), (c.m_x), (c.m_normal), o);
+          float diffuseColor = colors[1];
+          float specularColor = colors[2];
+          float ambientColor = colors[0];
+          // shadow rays
+          Ray shadowRay = Ray(c.m_x,c.m_x-l.getPosition());
+          for(int s = 0;s<v.size();s++) {
+            Collision sc = v[s]->collide(shadowRay);
+            if(sc.m_type == Collision::Type::kHit) {
+              colors[1] -= diffuseColor;
+              colors[2] -= specularColor;
+            }
+          }
         }
         colors[0] = (colors[0] > 1) ? 1 : (colors[0] < 0) ? 0 : colors[0];
         colors[1] = (colors[1] > 1) ? 1 : (colors[1] < 0) ? 0 : colors[1];
