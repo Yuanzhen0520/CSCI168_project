@@ -19,6 +19,7 @@ Extra features:
 
 Collaborators & Outside resources:
   LearnOpenGL.com
+  Scratchpixel.com
 
 Acknowledgement:
   I certify that I have listed above all the sources that I consulted regarding this assignment, 
