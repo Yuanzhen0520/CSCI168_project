@@ -5,7 +5,7 @@ Team members:
   Remy Zhang
 
 Known bugs & Missing features:
-  Portion of white in the plane 
+  N/A
   
 Features' main contributors:
   Reading a scene from an external file: Chi-Wei  , Brett , Yuanzhen , Hannah 
