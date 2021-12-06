@@ -1,4 +1,5 @@
 #include "light.h"
+#include <iostream>
 
 glm::vec3 Light::multipleLights(const Material* _m, glm::vec3 _p, glm::vec3 _n, glm::vec3 _cEye){
   glm::vec3 _d = normalize(position - _p);
@@ -9,7 +10,8 @@ glm::vec3 Light::multipleLights(const Material* _m, glm::vec3 _p, glm::vec3 _n, 
     
     //Lambertian Shading 
   glm::vec3 lD; 
-  int valueToPass,valueToPass2;
+  float valueToPass,valueToPass2;
+  std::cout << "_n: " << _n[2] << std::endl;
   if(glm::dot(_n,_d)>0) {
     valueToPass = glm::dot(_n,_d);
   }
@@ -21,13 +23,13 @@ glm::vec3 Light::multipleLights(const Material* _m, glm::vec3 _p, glm::vec3 _n, 
   //Blinn-Phong Shading 
   glm::vec3 lS;
   glm::vec3 h = glm::normalize((_cEye -_p)+ _d);
-  if(glm::dot(_cEye,h)>0) {
-    valueToPass = glm::dot(_cEye,h);
+  if(glm::dot(-_p,h)>0) {
+    valueToPass2 = glm::dot(-_p,h);
   }
   else {
-    valueToPass = 0;
+    valueToPass2 = 0;
   }
-  lS = _m->kS * iS * pow(valueToPass,_m->shininess);
+  lS = _m->kS * iS * powf(valueToPass2,_m->shininess);
   
-  return lA + lD + lS;
+  return lA + lD + lS ;
   }

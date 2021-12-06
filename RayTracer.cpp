@@ -92,7 +92,7 @@ void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr
         }
       }
       //std::cout << "Parameter = " << parameter << std::endl;
-      if(parameter == -1) g_frame[a] = glm::vec4(0.f,0.f,0.f,0.f);
+      if(parameter == -1) g_frame[a] = glm::vec4(0.6f,0.8f,1.f,1.f);
       else{ 
         Collision c = v[parameter]->collide(ray);
         glm::vec3 colors = glm::vec3(0,0,0);
@@ -100,8 +100,12 @@ void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr
           Light l = lv[i];
           colors += l.multipleLights((c.m_material), (c.m_x), (c.m_normal), o);
         }
+        colors[0] = (colors[0] > 1) ? 1 : (colors[0] < 0) ? 0 : colors[0];
+        colors[1] = (colors[1] > 1) ? 1 : (colors[1] < 0) ? 0 : colors[1];
+        colors[2] = (colors[2] > 1) ? 1 : (colors[2] < 0) ? 0 : colors[2];
         g_frame[a] = glm::vec4(colors, 1.f);
       }
+      
       for(auto p : v){
         delete p;
       }
