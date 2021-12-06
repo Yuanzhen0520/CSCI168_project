@@ -16,7 +16,7 @@ Features' main contributors:
   Shadow determination in the lighting computations: Chi-Wei , Brett , Yuanzhen , Hannah 
 
 Extra features:
-  Attenuation
+  Linear attenuation
 
 Collaborators & Outside resources:
   N/A
