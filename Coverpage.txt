@@ -5,7 +5,7 @@ Team members:
   Remy Zhang
 
 Known bugs & Missing features:
-  Portion of white in the plane 
+  N/A
   
 Features' main contributors:
   Reading a scene from an external file: Chi-Wei  , Brett , Yuanzhen , Hannah 
@@ -19,6 +19,7 @@ Extra features:
 
 Collaborators & Outside resources:
   LearnOpenGL.com
+  Scratchpixel.com
 
 Acknowledgement:
   I certify that I have listed above all the sources that I consulted regarding this assignment, 
