@@ -33,7 +33,7 @@ void RayTracer::render(const Scene& _scene,int g_height, int g_width, unique_ptr
   float d = 1;
   float t = d*tan(22.5);
   float b = -t;
-  float l = (16/9)*b;
+  float l = (16.0/9)*b;
   float r = -l;
   g_frame = std::make_unique<glm::vec4[]>(g_width*g_height);
   //std::cout << "g_width = " << g_width << std::endl;
