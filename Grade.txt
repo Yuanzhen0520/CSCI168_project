@@ -1,0 +1,39 @@
+--------------------------------------------------------------------------------
+-- Base Grade Information
+--------------------------------------------------------------------------------
+
+ Checkpoints:                                                              25/25
+    Features:                                                              50/50
+      Extras:                                                               3/15
+Presentation:                                                              40/50
+________________________________________________________________________________
+  Deductions:                                                                -10
+________________________________________________________________________________
+      Total:                                                             108/140
+
+--------------------------------------------------------------------------------
+-- Comments
+--------------------------------------------------------------------------------
+
+* Base Features Claimed *
+
++10 - Reading scene from external file
++10 - Ray generation in Perspective View
++10 - Collision of rays with plane and sphere
++10 - ADS Lighting from a single point light
++10 - Shadow determination in lighting computations
+
+* Extras Claimed *
+
++1 - Linear attenuation (not implemented correctly)
++2 - Multiple lights
+
+* Deductions *
+
+-2 External file name is hard coded.
+-3 Not all parameters are read in from a file.
+-5 Shadowing is incorrect because bounds on shadow rays are not checked.
+
+* Notes *
+
+Code has multiple memory leaks.
